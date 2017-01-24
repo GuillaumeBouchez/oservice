@@ -1,0 +1,162 @@
+/* Règles CSS pour les écrans dont la résolution est inférieure à 1024px */
+body, html {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+header {
+	text-align: center;
+	font-size: 50px;
+}
+
+div#hello, div#master, div#panier{
+	width: 100%;
+	display: block; 
+	margin: 40px auto;
+}
+
+div#taxes, div#radio1, div#radio2, div#valider, div#ok, div#prix, div#afficher_nom, div#afficher_commande, div#demande{
+	display: block; 
+	width: 80%;
+	margin: 20px auto;
+}
+
+div#afficher_commande, div#afficher_nom, div#prix{
+	font-weight: bold;
+}
+
+.number label {
+	width: 50px;
+	display: inline-block;
+}
+
+.achats label {
+	width: 70px;
+	display: inline-block;
+}
+
+
+/* Règles CSS pour les écrans dont la résoltuin est supérieure à 1024px*/
+@media all and (min-width: 1024px){
+	div#hello, div#master, div#panier{
+		width: 80%;
+		display: block; 
+		margin: 50px auto;
+	}
+
+	/* TAXES */
+	div#taxes {
+		display: inline-block; 
+		float: left;	
+		vertical-align: middle;
+		width: 35%;
+		position: relative;
+		bottom: 20px;
+	}
+
+	div#radio1, div#radio2 {
+		display: inline-block;
+		float: left;
+		vertical-align: middle;
+		width: 15%;
+	}
+
+	div#radio1{
+		position: relative;
+		bottom: 25px;
+	}
+
+	div#radio2{
+		position: relative;
+		bottom: 5px;
+	}
+
+	div#valider {
+		height: 100px;
+		float: left;
+		vertical-align: middle;
+		width: 10%;
+	}
+
+	div#demande{
+		width: 50%;
+		float: left;
+		height: 80px;
+	}
+
+	.number {
+		display: block;
+	}
+
+	.number:nth-child(odd) {
+		margin-bottom: 10px;
+	}
+
+	.achats {
+		display: block;
+	}
+
+	.achats:nth-child(odd) {
+		margin-bottom: 10px;
+	}
+
+	.achats:nth-child(even) {
+		margin-bottom: 10px;
+	}
+
+	.bouton:hover {
+		background-color: #F5F5F5;
+	}
+
+	.bouton{
+		display: inline-block;
+	}
+
+	.clearer { 
+		clear: both;
+	}
+
+
+	div#prix {
+		display: inline-block;
+		float: left;
+		vertical-align: middle;
+		text-align: center;
+		font-weight: bold;
+		width: 35%;
+	}
+
+	div#afficher_nom{
+		display: inline-block;
+		float: left;
+		font-weight: bold;
+		width: 35%;
+	}
+
+	div#afficher_commande{
+		position: relative;
+		font-weight: bold;
+		display: inline-block; 
+		float: left; 
+		bottom: 70px;
+		width: 40%;
+	}
+
+	div#ok{
+		height: 100px;
+		float: left;
+		width: 10%;
+		position: relative;
+		left: 20px;
+	}
+
+	#commande{
+		position: relative;
+		right: 20px;
+		top: 20px;
+		text-decoration: underline;
+	}
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>O'services</title>		
+		<meta charset="utf-8">
+		<link rel="icon" type="image" href="{{ url_for('static', filename='images/url.png') }}" />
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<script type="text/javascript" src="{{ url_for('static', filename='js/TVA.js') }}"></script>
+	</head>
+	<body>
+		<header>O'services</header>
+		<hr style="width: 80%;">
+		<div id="hello">  
+			<div id="demande"> 
+		    	<form method = "POST">
+         			<label for="nom">Votre prénom : </label>
+         			<input type = "text" name = "nom" />
+        			<input class="bouton" type = "submit" value = "OK" />
+      			</form>
+      		</div>
+      		<div id="afficher_nom">
+		     	{% if nom %}
+      				Hello {{ nom }}
+    			{% endif %}
+    		</div>
+		</div> 
+		<div class="clearer"></div>
+		<hr style="width: 80%;"> 
+		<div id="master"> 
+			<div id="taxes">
+				<div class="number">
+					<label for="HT">HT:</label>
+					<input type="number" value='' step="any" id="HT" min="0" onBlur="VerifInput(this);">
+				</div>
+				<div class="number">
+					<label for="TTC">TTC:</label>
+					<input type="number" value='' step="any" id="TTC" min="0" onBlur="VerifInput(this);">
+				</div>
+			</div>  
+			<div id="radio1">
+				<input type="radio" name="taxe" value="5.5" id="taxe" checked="checked"/> <label for="taxe">5.5%</label><br />
+				<input type="radio" name="taxe" value="10"  id="taxe" /> <label for="taxe">10%</label><br />
+				<input type="radio" name="taxe" value="20"  id="taxe" /> <label for="taxe">20%</label><br />
+			</div>
+			<div id="ok">
+				<input class="bouton" type="button" onclick="prix();" value="Ok">
+			</div>
+			<div id="prix">
+			</div>
+		</div>
+		<div class="clearer">
+		</div>
+		<hr style="width: 80%;">
+		<div id="panier">
+			<form method="POST">
+				<input type="hidden" name="ajout_produit" value="1">
+				<div id="taxes">
+					<div class="achats">
+	       					<label for="nom_panier">Produit:</label>
+							<input type="text" name="nom_produit" id="produit" min="0" value ="" onBlur="VerifInput(this);">
+					</div>
+					<div class="achats">
+							<label for="nom_panier">Prix:</label>
+							<input type="number" name="prix" id="cout" min="0" value ="" step="any" onBlur="VerifInput(this);"><br>
+					</div>
+					<div class="achats">
+							<label for="nom_panier">Quantité:</label>
+							<input type="number" name="quantite" id="quantite" min="0" value ="" onBlur="VerifInput(this);">
+					</div>
+				</div>
+				<div id="radio2">
+					<input type="radio" name="taxe2" value="5.5" id="taxe2" checked="checked" /> <label for="taxe" />5.5%</label><br />
+					<input type="radio" name="taxe2" value="10"  id="taxe2" /> <label for="taxe">10%</label><br />
+					<input type="radio" name="taxe2" value="20"  id="taxe2" /> <label for="taxe">20%</label><br />
+				</div>
+				<div id="valider">
+					<input class="bouton" type = "submit" value = "Ajouter" />
+					<br><br>
+			</form>
+			<form action="/RAZ">
+					<input class="bouton" type="submit" onclick="" value="RAZ">
+				</div>
+			</form>
+				<div id="afficher_commande">
+					{% if nb_liste or quantite %}
+					<ul>
+						<p id="commande">Commande:</p>
+						{% if nb_liste is greaterthan 1 %}
+							<li>{{nb_liste}} lignes </li>
+						{% else %}
+							<li>{{nb_liste}} ligne </li>
+				    	{% endif %}
+				    	<li>{{prix}} € HT </li>
+				    	{% if quantite is greaterthan 1 %}
+				    		<li>{{quantite}} articles </li>
+				    	{% else %}
+				      		<li>{{quantite}} article </li>
+				      	{% endif %}
+				      	<li>{{TVA}} € de TVA </li>
+				      	<li>{{prixTTC}} € TTC </li>
+			 		</ul>
+			    	{% endif %}
+			</div>
+		</form>
+		</div>
+	</body>
+
+</html>
